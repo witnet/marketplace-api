@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser'
 import { Request, Response } from 'express'
 import { Routes } from './routes'
 import { User } from './entity/User'
+import { Template } from './entity/Template'
 
 createConnection()
   .then(async connection => {
@@ -57,6 +58,18 @@ createConnection()
       })
     )
 
+    // insert new users for test
+    await connection.manager.save(
+      connection.manager.create(Template, {
+        name: 'Get BTC price',
+        description: 'Retrieve bitcoin price from some apis',
+        radRequest: {
+          retrieve: [{ url: '', kind: 'HTTP-GET', script: [128, [67, 5]]}],
+          aggregate: [16],
+          tally: [],
+        }
+      })
+    )
     console.log(
       'Express server has started on port 3000. Open http://localhost:3000/users to see results'
     )
