@@ -1,0 +1,30 @@
+{
+   "name": "marketplace-api",
+   "version": "0.0.1",
+   "description": "Marketplace API for Witnet data request templates",
+   "license": "GPL-3.0",
+   "devDependencies": {
+      "@types/node": "^8.0.29",
+      "prettier-standard": "^16.1.0",
+      "supertest": "^4.0.2",
+      "ts-jest": "^24.2.0",
+      "ts-node": "3.3.0",
+      "typescript": "3.3.3333"
+   },
+   "author": "Witnet Foundation <info@witnet.foundation>",
+   "dependencies": {
+      "@types/express": "^4.17.2",
+      "@types/supertest": "^2.0.8",
+      "body-parser": "^1.18.1",
+      "express": "^4.15.4",
+      "mongodb": "^3.0.8",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.21"
+   },
+   "scripts": {
+      "build": "tsc -p tsconfig.build.json ",
+      "dev": "ts-node --project tsconfig.json src/index.ts",
+      "fmt": "prettier-standard --check --lint '**/*.ts'",
+      "fmt!": "prettier-standard --lint '**/*.ts'"
+   }
+}
