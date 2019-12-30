@@ -1,6 +1,12 @@
 import { UserController } from './controller/UserController'
-
+import { TemplateController } from './controller/TemplateController'
 export const Routes = [
+  {
+    method: 'post',
+    route: '/templates',
+    controller: TemplateController,
+    action: 'save'
+  },
   {
     method: 'get',
     route: '/users',
