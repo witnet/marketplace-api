@@ -4,7 +4,9 @@
    "description": "Marketplace API for Witnet data request templates",
    "license": "GPL-3.0",
    "devDependencies": {
+      "@types/jest": "^24.0.24",
       "@types/node": "^8.0.29",
+      "jest": "^24.9.0",
       "prettier-standard": "^16.1.0",
       "supertest": "^4.0.2",
       "ts-jest": "^24.2.0",
@@ -25,6 +27,7 @@
       "build": "tsc -p tsconfig.build.json ",
       "dev": "ts-node --project tsconfig.json src/index.ts",
       "fmt": "prettier-standard --check --lint '**/*.ts'",
-      "fmt!": "prettier-standard --lint '**/*.ts'"
+      "fmt!": "prettier-standard --lint '**/*.ts'",
+      "test": "jest"
    }
 }
