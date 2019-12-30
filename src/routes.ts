@@ -9,6 +9,24 @@ export const Routes = [
   },
   {
     method: 'get',
+    route: '/templates',
+    controller: TemplateController,
+    action: 'all'
+  },
+  {
+    method: 'get',
+    route: '/templates/:id',
+    controller: TemplateController,
+    action: 'one'
+  },
+  {
+    method: 'delete',
+    route: '/templates/:id',
+    controller: TemplateController,
+    action: 'remove'
+  },
+  {
+    method: 'get',
     route: '/users',
     controller: UserController,
     action: 'all'
