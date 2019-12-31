@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 import { Express } from 'express'
 import { Connection } from 'typeorm'
+import { anyTypeAnnotation } from '@babel/types';
 const request = require('supertest')
 
 describe('test endpoints', function() {
@@ -25,6 +26,7 @@ describe('test endpoints', function() {
     it('getTemplates', async function()  {
       const result = await request(server).get('/templates')
       expect(result.status).toBe(200)
+      expect(result.body).not.toBeFalsy()
     })
   })
   
@@ -42,6 +44,7 @@ describe('test endpoints', function() {
           }
         })
       expect(result.status).toBe(200)
+      expect(result.body).not.toBeFalsy()
     })
   })
   
@@ -51,8 +54,8 @@ describe('test endpoints', function() {
       const templateId = templatesReq.body[0].id
       const result = await request(server)
         .get(`/templates/${templateId}`)
-      console.log(templateId)
       expect(result.status).toBe(200)
+      expect(result.body).not.toBeFalsy()
     })
   })
   
@@ -73,6 +76,7 @@ describe('test endpoints', function() {
           age: 27
         })
       expect(result.status).toBe(200)
+      expect(result.body).not.toBeFalsy()
     })
   })
   
@@ -82,8 +86,8 @@ describe('test endpoints', function() {
       const userId = usersReq.body[0].id
       const result = await request(server)
         .get(`/users/${userId}`)
-      console.log(userId)
       expect(result.status).toBe(200)
+      expect(result.body).not.toBeFalsy()
     })
   })
   
