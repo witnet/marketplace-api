@@ -7,7 +7,10 @@ import { Routes } from './routes'
 import { User } from './entity/User'
 import { Template } from './entity/Template'
 
-export function getApp (): Promise<{ express: Express, dbConnection: Connection }> {
+export function getApp (): Promise<{
+  express: Express
+  dbConnection: Connection
+}> {
   return createConnection().then(async dbConnection => {
     // create express app
     const app = express()
@@ -30,7 +33,7 @@ export function getApp (): Promise<{ express: Express, dbConnection: Connection 
                 : undefined
             )
           } else if (result !== null && result !== undefined) {
-            res.json(result)
+            res.send(result)
           }
         }
       )
@@ -40,34 +43,34 @@ export function getApp (): Promise<{ express: Express, dbConnection: Connection 
     // ...
 
     // insert new users for test
-    await dbConnection.manager.save(
-      dbConnection.manager.create(User, {
-        firstName: 'Timber',
-        lastName: 'Saw',
-        age: 27
-      })
-    )
+    // await dbConnection.manager.save(
+    //   dbConnection.manager.create(User, {
+    //     firstName: 'Timber',
+    //     lastName: 'Saw',
+    //     age: 27
+    //   })
+    // )
 
-    await dbConnection.manager.save(
-      dbConnection.manager.create(User, {
-        firstName: 'Phantom',
-        lastName: 'Assassin',
-        age: 24
-      })
-    )
+    // await dbConnection.manager.save(
+    //   dbConnection.manager.create(User, {
+    //     firstName: 'Phantom',
+    //     lastName: 'Assassin',
+    //     age: 24
+    //   })
+    // )
 
     // insert new users for test
-    await dbConnection.manager.save(
-      dbConnection.manager.create(Template, {
-        name: 'Get BTC price',
-        description: 'Retrieve bitcoin price from some apis',
-        radRequest: {
-          retrieve: [{ url: '', kind: 'HTTP-GET', script: [128, [67, 5]] }],
-          aggregate: [16],
-          tally: []
-        }
-      })
-    )
+    // await dbConnection.manager.save(
+    //   dbConnection.manager.create(Template, {
+    //     name: 'Get BTC price',
+    //     description: 'Retrieve bitcoin price from some apis',
+    //     radRequest: {
+    //       retrieve: [{ url: '', kind: 'HTTP-GET', script: [128, [67, 5]] }],
+    //       aggregate: [16],
+    //       tally: []
+    //     }
+    //   })
+    // )
     // start express server
     return { express: app, dbConnection }
   })
