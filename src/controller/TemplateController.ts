@@ -2,6 +2,7 @@ import { getRepository } from 'typeorm'
 import { NextFunction, Request, Response } from 'express'
 import { Template } from '../entity/Template'
 import { validate } from 'class-validator'
+
 export class TemplateController {
   private templateRepository = getRepository(Template)
 
@@ -29,7 +30,9 @@ export class TemplateController {
   }
 
   async remove (request: Request, response: Response, next: NextFunction) {
-    let templateToRemove = await this.templateRepository.findOne(request.params.id)
+    let templateToRemove = await this.templateRepository.findOne(
+      request.params.id
+    )
     await this.templateRepository.remove(templateToRemove)
   }
 }

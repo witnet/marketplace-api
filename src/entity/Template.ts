@@ -1,9 +1,5 @@
 import { Entity, ObjectIdColumn, ObjectID, Column } from 'typeorm'
-import {
-  IsNotEmpty,
-  IsObject,
-  IsString
-} from 'class-validator'
+import { IsNotEmpty, IsObject, IsString } from 'class-validator'
 // TODO: define a stronger type for RadonScript
 type RadonScript = Array<number | Array<number | string | boolean>>
 
