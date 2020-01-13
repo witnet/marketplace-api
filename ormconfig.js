@@ -1,20 +1,24 @@
+const rootDir = process.env.NODE_ENV === "development" ?
+  "src" :
+  "build/src"
+
 module.exports = {
    "type": "mongodb",
    "url": `${process.env.MONGODB_URL}`,
    "synchronize": true,
    "logging": false,
    "entities": [
-      "src/entity/**/*.ts"
+      rootDir + "/entity/**/*.{ts,js}"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
+      rootDir + "/migration/**/*.{ts,js}"
    ],
    "subscribers": [
-      "src/subscriber/**/*.ts"
+      rootDir + "/subscriber/**/*.{ts,js}"
    ],
    "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
+      "entitiesDir": rootDir + "/entity",
+      "migrationsDir": rootDir + "/migration",
+      "subscribersDir": rootDir + "/subscriber"
    }
 }
